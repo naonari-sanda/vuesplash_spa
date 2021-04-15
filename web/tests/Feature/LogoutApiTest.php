@@ -7,30 +7,24 @@ use Illuminate\Foundation\Testing\WithFaker;
 use Tests\TestCase;
 use App\User;
 
-class LoginApiTest extends TestCase
+class LogoutApiTest extends TestCase
 {
-
-    use RefreshDatabase;
 
     public function setUp(): void
     {
         parent::setUp();
 
+        // テストユーザー作成
         $this->user = factory(User::class)->create();
     }
 
-    public function should_response_login_data()
+    public function should_認証済みのユーザーをログアウトさせる()
     {
+        $response = $this->actingAs($this->user)
+            ->json('POST', route('logout'));
 
-        $response = $this->json('POST', route('login'), [
-            'email' => $this->user->email,
-            'password' => $this->user->password,
-        ]);
-
-        $response->assertStatus(200)
-            ->assertJson(['name' => $this->user->name]);
-
-        $this->assertAuthenticatedAs($this->user);
+        $response->assertStatus(200);
+        $this->assertGuest();
     }
 
     public function testExample()

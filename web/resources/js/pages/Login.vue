@@ -3,14 +3,14 @@
     <ul class="tab">
       <li
         class="tab__item"
-        :class="{ 'tab__item--activ': tab === 1 }"
+        :class="{ 'tab__item--active': tab === 1 }"
         @click="tab = 1"
       >
         Login
       </li>
       <li
         class="tab__item"
-        :class="{ 'tab__item--activ': tab === 2 }"
+        :class="{ 'tab__item--active': tab === 2 }"
         @click="tab = 2"
       >
         Register
@@ -23,14 +23,14 @@
           type="text"
           class="form__item"
           id="login-email"
-          v-model="login.email"
+          v-model="loginForm.email"
         />
         <label for="login-password">Password</label>
         <input
           type="password"
           class="form__item"
           id="login-password"
-          v-model="login.password"
+          v-model="loginForm.password"
         />
         <div class="form__button">
           <button type="submit" class="button button--inverse">login</button>

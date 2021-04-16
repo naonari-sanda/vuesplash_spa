@@ -862,7 +862,7 @@ var render = function() {
         "li",
         {
           staticClass: "tab__item",
-          class: { "tab__item--activ": _vm.tab === 1 },
+          class: { "tab__item--active": _vm.tab === 1 },
           on: {
             click: function($event) {
               _vm.tab = 1
@@ -876,7 +876,7 @@ var render = function() {
         "li",
         {
           staticClass: "tab__item",
-          class: { "tab__item--activ": _vm.tab === 2 },
+          class: { "tab__item--active": _vm.tab === 2 },
           on: {
             click: function($event) {
               _vm.tab = 2
@@ -920,19 +920,19 @@ var render = function() {
                 {
                   name: "model",
                   rawName: "v-model",
-                  value: _vm.login.email,
-                  expression: "login.email"
+                  value: _vm.loginForm.email,
+                  expression: "loginForm.email"
                 }
               ],
               staticClass: "form__item",
               attrs: { type: "text", id: "login-email" },
-              domProps: { value: _vm.login.email },
+              domProps: { value: _vm.loginForm.email },
               on: {
                 input: function($event) {
                   if ($event.target.composing) {
                     return
                   }
-                  _vm.$set(_vm.login, "email", $event.target.value)
+                  _vm.$set(_vm.loginForm, "email", $event.target.value)
                 }
               }
             }),
@@ -946,19 +946,19 @@ var render = function() {
                 {
                   name: "model",
                   rawName: "v-model",
-                  value: _vm.login.password,
-                  expression: "login.password"
+                  value: _vm.loginForm.password,
+                  expression: "loginForm.password"
                 }
               ],
               staticClass: "form__item",
               attrs: { type: "password", id: "login-password" },
-              domProps: { value: _vm.login.password },
+              domProps: { value: _vm.loginForm.password },
               on: {
                 input: function($event) {
                   if ($event.target.composing) {
                     return
                   }
-                  _vm.$set(_vm.login, "password", $event.target.value)
+                  _vm.$set(_vm.loginForm, "password", $event.target.value)
                 }
               }
             }),

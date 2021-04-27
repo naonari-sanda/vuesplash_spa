@@ -96,12 +96,19 @@ export default {
     async login() {
       await this.$store.dispatch("auth/login", this.loginForm);
 
-      this.$router.push("/");
+      if (this.apiStaus) {
+        this.$router.push("/");
+      }
     },
     async register() {
       await this.$store.dispatch("auth/register", this.registerForm);
 
       this.$router.push("/");
+    },
+  },
+  computed: {
+    apiStatus() {
+      return this.$store.state.auth.apiStatus;
     },
   },
 };

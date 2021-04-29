@@ -1,5 +1,5 @@
 const state = {
-  setCode: null
+  code: null
 }
 
 const mutations = {

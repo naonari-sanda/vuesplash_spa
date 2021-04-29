@@ -6,6 +6,7 @@
 export const OK = 200
 export const CREATE = 201
 export const INTERNAL_SERVER_ERROR = 500
+export const UNPROCESSABLE_ENTITY = 422
 
 export function getCookieValue(searchKey) {
   if (typeof searchKey === 'undefined') {

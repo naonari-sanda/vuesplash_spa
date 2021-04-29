@@ -4,6 +4,11 @@ import {
 
 window.axios = require('axios')
 
+window.axios.interceptors.response.use(
+  response => response,
+  error => error.response || error
+)
+
 // Ajaxリクエストであることを示すヘッダーを付与する
 window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest'
 

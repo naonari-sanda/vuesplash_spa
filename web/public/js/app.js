@@ -1967,9 +1967,9 @@ module.exports = {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _components_Message_vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./components/Message.vue */ "./resources/js/components/Message.vue");
-/* harmony import */ var _components_Navbar_vue__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./components/Navbar.vue */ "./resources/js/components/Navbar.vue");
-/* harmony import */ var _components_Footer_vue__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./components/Footer.vue */ "./resources/js/components/Footer.vue");
+/* harmony import */ var _components_Navbar_vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./components/Navbar.vue */ "./resources/js/components/Navbar.vue");
+/* harmony import */ var _components_Footer_vue__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./components/Footer.vue */ "./resources/js/components/Footer.vue");
+/* harmony import */ var _components_Message_vue__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./components/Message.vue */ "./resources/js/components/Message.vue");
 /* harmony import */ var _util__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./util */ "./resources/js/util.js");
 //
 //
@@ -1992,9 +1992,9 @@ __webpack_require__.r(__webpack_exports__);
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   components: {
-    Message: _components_Message_vue__WEBPACK_IMPORTED_MODULE_0__["default"],
-    Navbar: _components_Navbar_vue__WEBPACK_IMPORTED_MODULE_1__["default"],
-    Footer: _components_Footer_vue__WEBPACK_IMPORTED_MODULE_2__["default"]
+    Message: _components_Message_vue__WEBPACK_IMPORTED_MODULE_2__["default"],
+    Navbar: _components_Navbar_vue__WEBPACK_IMPORTED_MODULE_0__["default"],
+    Footer: _components_Footer_vue__WEBPACK_IMPORTED_MODULE_1__["default"]
   },
   computed: {
     errorCode: function errorCode() {
@@ -2009,10 +2009,10 @@ __webpack_require__.r(__webpack_exports__);
         }
       },
       immediate: true
+    },
+    $route: function $route() {
+      this.$store.commit("error/setCode", null);
     }
-  },
-  $router: function $router() {
-    this.$store.commit("error/setCode", null);
   }
 });
 
@@ -2135,6 +2135,8 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _PhotoForm_vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./PhotoForm.vue */ "./resources/js/components/PhotoForm.vue");
+//
+//
 //
 //
 //
@@ -3875,7 +3877,7 @@ var render = function() {
     _c(
       "p",
       { staticClass: "loading__text" },
-      [_vm._t("default", [_vm._v(" Loading... ")])],
+      [_vm._t("default", [_vm._v("Loading...")])],
       2
     ),
     _vm._v(" "),
@@ -3982,7 +3984,7 @@ var render = function() {
         _vm._v(" "),
         _vm.isLogin
           ? _c("span", { staticClass: "navbar__item" }, [
-              _vm._v(" " + _vm._s(_vm.username) + " ")
+              _vm._v("\n      " + _vm._s(_vm.username) + "\n    ")
             ])
           : _c(
               "div",
@@ -22126,12 +22128,12 @@ var state = {
   code: null
 };
 var mutations = {
-  setCode: function setCode(State, code) {
+  setCode: function setCode(state, code) {
     state.code = code;
   }
 };
 /* harmony default export */ __webpack_exports__["default"] = ({
-  namespased: true,
+  namespaced: true,
   state: state,
   mutations: mutations
 });

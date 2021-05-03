@@ -10,6 +10,10 @@ class User extends Authenticatable
 {
     use Notifiable;
 
+    protected $visible = [
+        'name'
+    ];
+
     public function photos()
     {
         return $this->hasMany('App\Photo');

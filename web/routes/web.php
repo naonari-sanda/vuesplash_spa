@@ -10,5 +10,7 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
+// 写真ダウンロード
+Route::get('photos/{photo}/download', 'PhotoController@download');
 
 Route::get('/{any?}', fn () => view('index'))->where('any', '.+');

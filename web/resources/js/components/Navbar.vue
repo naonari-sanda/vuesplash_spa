@@ -8,7 +8,9 @@
           Submit a photo
         </button>
       </div>
-      <span v-if="isLogin" class="navbar__item"> {{ username }} </span>
+      <span v-if="isLogin" class="navbar__item">
+        {{ username }}
+      </span>
       <div v-else class="navbar__item">
         <RouterLink class="button button--link" to="/login">
           Login / Register
@@ -21,7 +23,6 @@
 
 <script>
 import PhotoForm from "./PhotoForm.vue";
-
 export default {
   components: {
     PhotoForm,

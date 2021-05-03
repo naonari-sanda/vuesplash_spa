@@ -3,13 +3,13 @@ const state = {
 }
 
 const mutations = {
-  setCode(State, code) {
+  setCode(state, code) {
     state.code = code
   }
 }
 
 export default {
-  namespased: true,
+  namespaced: true,
   state,
   mutations
 }

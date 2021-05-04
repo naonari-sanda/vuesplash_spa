@@ -2742,9 +2742,6 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //
 //
 //
-//
-//
-//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: {
@@ -2757,7 +2754,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
     return {
       photo: null,
       fullWidth: false,
-      commentContent: commentContent,
+      commentContent: "",
       commentErrors: null
     };
   },
@@ -2808,7 +2805,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
               case 0:
                 _context2.next = 2;
                 return axios.post("/api/photos/".concat(_this2.id, "/comments"), {
-                  comment: _this2.commentContent
+                  content: _this2.commentContent
                 });
 
               case 2:
@@ -2838,7 +2835,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 
               case 11:
                 _this2.commentContent = "";
-                _this2.photo.comments = [response.data = [response.data].concat(_toConsumableArray(_this2.photo.comments))];
+                _this2.photo.comments = [response.data].concat(_toConsumableArray(_this2.photo.comments));
 
               case 13:
               case "end":
@@ -5147,8 +5144,6 @@ var render = function() {
             _vm._v(" "),
             _vm._m(1),
             _vm._v(" "),
-            _vm._m(2),
-            _vm._v(" "),
             _vm.photo.comments.length > 0
               ? _c(
                   "ul",
@@ -5235,7 +5230,7 @@ var render = function() {
                       }
                     }),
                     _vm._v(" "),
-                    _vm._m(3)
+                    _vm._m(2)
                   ]
                 )
               : _vm._e()
@@ -5254,15 +5249,6 @@ var staticRenderFns = [
       { staticClass: "button button--like", attrs: { title: "Like photo" } },
       [_c("i", { staticClass: "icon ion-md-heart" }), _vm._v("12\n    ")]
     )
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("h2", { staticClass: "photo-detail__title" }, [
-      _c("i", { staticClass: "icon ion-md-chatboxes" }),
-      _vm._v("Comments\n    ")
-    ])
   },
   function() {
     var _vm = this

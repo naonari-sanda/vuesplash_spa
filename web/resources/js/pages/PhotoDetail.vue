@@ -25,9 +25,6 @@
       <h2 class="photo-detail__title">
         <i class="icon ion-md-chatboxes"></i>Comments
       </h2>
-      <h2 class="photo-detail__title">
-        <i class="icon ion-md-chatboxes"></i>Comments
-      </h2>
       <ul v-if="photo.comments.length > 0" class="photo-detail__comments">
         <li
           v-for="comment in photo.comments"
@@ -74,7 +71,7 @@ export default {
     return {
       photo: null,
       fullWidth: false,
-      commentContent,
+      commentContent: "",
       commentErrors: null,
     };
   },
@@ -91,7 +88,7 @@ export default {
     },
     async addComment() {
       const response = await axios.post(`/api/photos/${this.id}/comments`, {
-        comment: this.commentContent,
+        content: this.commentContent,
       });
 
       // バリデーションエラー
@@ -112,9 +109,7 @@ export default {
 
       this.commentContent = "";
 
-      this.photo.comments = [
-        (response.data = [response.data, ...this.photo.comments]),
-      ];
+      this.photo.comments = [response.data, ...this.photo.comments];
     },
   },
   computed: {

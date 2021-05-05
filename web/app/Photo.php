@@ -2,28 +2,40 @@
 
 namespace App;
 
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Arr;
 use Illuminate\Support\Facades\Storage;
 
 class Photo extends Model
 {
+    public function __construct(array $attributes = [])
+    {
+        parent::__construct($attributes);
+
+        if (!Arr::get($this->attributes, 'id')) {
+            $this->setId();
+        }
+    }
+
     /** プライマリキーの型 */
     protected $keyType = 'string';
 
     /** IDの桁数 */
     const ID_LENGTH = 12;
 
-    /** JSONに含める属性 */
-    protected $appends = [
-        'url',
-    ];
-
+    /** ページ数 */
     protected $perPage = 5;
 
     /** JSONに含める属性 */
+    protected $appends = [
+        'url', 'likes_count', 'liked_by_user',
+    ];
+
+    /** JSONに含める属性 */
     protected $visible = [
-    'id', 'owner', 'url', 'comments'
+        'id', 'owner', 'url', 'comments',
+        'likes_count', 'liked_by_user',
     ];
 
     public function owner()
@@ -36,18 +48,39 @@ class Photo extends Model
         return $this->hasMany('App\Comment')->orderBy('id', 'desc');
     }
 
+    public function likes()
+    {
+        return $this->belongsToMany('App\User', 'likes')->withTimestamps();
+    }
+
+    
     public function getUrlAttribute()
     {
         return Storage::cloud()->url($this->attributes['filename']);
     }
 
-    public function __construct(array $attributes = [])
+    /**
+     * アクセサ - likes_count
+     * @return int
+     */
+    public function getLikesCountAttribute()
     {
-        parent::__construct($attributes);
+        return $this->likes->count();
+    }
 
-        if (!Arr::get($this->attributes, 'id')) {
-            $this->setId();
+    /**
+     *アクセサ - liked_by_user
+     *@return boolean
+     */
+    public function getLikedByUserAttribute()
+    {
+        if (Auth::guest()) {
+            return false;
         }
+
+        return $this->likes->contains(function ($user) {
+            return $user->id === Auth::user()->id;
+        });
     }
 
     /**
